@@ -12,10 +12,10 @@ ADO.NET ODBC
 
 
 #import  OLEDB package
-    Imports System.Data.OleDb
+        Imports System.Data.OleDb
 
-#DECLARE OLEDB CONNECTION from DATABASE  MS ACESS( inventorydb.accdb) , ACE.OLEDB.12 can be upgraded  to 16 and install the ACCESS DATABASE ENGINE installer from internet
-    Dim oledb_connection As New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Admin\Documents\inventorydb.accdb")
+#DECLARE OLEDB CONNECTION from DATABASE  MS ACESS( inventorydb.accdb) , ACE.OLEDB.12 can be upgraded  to 16 and install the ACCESS #DATABASE ENGINE installer from internet
+        Dim oledb_connection As New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Admin\Documents\inventorydb.accdb")
 
 
 #DECLARE for STRING SQL QUERY "eg: SELECT * FROM tableTest where"

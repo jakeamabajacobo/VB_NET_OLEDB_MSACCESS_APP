@@ -39,6 +39,22 @@ Public Class Form1
     End Function
 
 
+
+    Function OleDbComm(ByVal string_qry As String, ByVal db_con As OleDbConnection)
+        Try
+            oledb_connection.Open()
+            oledb_command.Connection = db_con
+            oledb_command.CommandText = string_qry
+            Return oledb_command.ExecuteNonQuery
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            oledb_connection.Close()
+        End Try
+
+    End Function
+
     Function PopulationTableItems()
         Try
             If CheckOleDbconnection() Then
@@ -71,29 +87,18 @@ Public Class Form1
 
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
-        Try
-            If CheckOleDbconnection() Then
 
-                oledb_connection.Open()
-                sql_string = "INSERT INTO tblitems(ITEMNAME,ITEMDESCRIPTION,QTY,PRICE) VALUES ('" & txt_itemname.Text & "','" & txt_itemdescription.Text & "','" & Val(txt_qty.Text) & "','" & Val(txt_price.Text) & "');"
-                oledb_command.Connection = oledb_connection
-                oledb_command.CommandText = sql_string
-                Dim i As Integer = oledb_command.ExecuteNonQuery
-
-                If i > 0 Then
-                    MsgBox("New Item has been saved!")
-                    ClearTable()
-                    PopulationTableItems()
-                    ClearInputFields()
-                Else
-                    MsgBox("Cannot Save Item!!")
-                End If
+        If CheckOleDbconnection() Then
+            If (OleDbComm("INSERT INTO tblitems(ITEMNAME,ITEMDESCRIPTION,QTY,PRICE) VALUES ('" & txt_itemname.Text & "','" & txt_itemdescription.Text & "','" & Val(txt_qty.Text) & "','" & Val(txt_price.Text) & "');", oledb_connection) > 0) Then
+                MsgBox("Item has been SAVED!")
+                ClearTable()
+                PopulationTableItems()
+                ClearInputFields()
+            Else
+                MsgBox("Item not save!")
             End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            oledb_connection.Close()
-        End Try
+        End If
+
 
     End Sub
 
@@ -102,29 +107,17 @@ Public Class Form1
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
-        Try
-            If CheckOleDbconnection() Then
-                oledb_connection.Open()
-                sql_string = "UPDATE tblitems SET ITEMNAME='" & txt_itemname.Text & "',ITEMDESCRIPTION='" & txt_itemdescription.Text & "',QTY=" & Val(txt_qty.Text) & ",PRICE=" & Val(txt_price.Text) & " WHERE ID=" & Val(Me.Text) & ""
-                oledb_command.Connection = oledb_connection
-                oledb_command.CommandText = sql_string
-                Dim i As Integer = oledb_command.ExecuteNonQuery
-                If i > 0 Then
-                    MsgBox("ID No." & Me.Text & " has been UPDATED!")
-                    ClearTable()
-                    PopulationTableItems()
-                    ClearInputFields()
-                Else
-                    MsgBox("ID No." & Me.Text & "CANNOT UPDATE")
-                End If
 
+        If CheckOleDbconnection() Then
+            If (OleDbComm("UPDATE tblitems SET ITEMNAME='" & txt_itemname.Text & "',ITEMDESCRIPTION='" & txt_itemdescription.Text & "',QTY=" & Val(txt_qty.Text) & ",PRICE=" & Val(txt_price.Text) & " WHERE ID=" & Val(Me.Text) & "", oledb_connection) > 0) Then
+                MsgBox("Item have been UPDATED!")
+                ClearTable()
+                PopulationTableItems()
+                ClearInputFields()
+            Else
+                MsgBox("Item not UPDATE!")
             End If
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            oledb_connection.Close()
-        End Try
+        End If
 
     End Sub
 
@@ -133,27 +126,19 @@ Public Class Form1
     End Sub
 
     Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
-        Try
-            If CheckOleDbconnection() Then
-                oledb_connection.Open()
-                sql_string = "DELETE  * FROM tblitems WHERE ID=" & Val(Me.Text) & ""
-                oledb_command.Connection = oledb_connection
-                oledb_command.CommandText = sql_string
-                Dim i As Integer = oledb_command.ExecuteNonQuery
-                If i > 0 Then
-                    MsgBox("ID No." & Me.Text & " has been DELETED!")
-                    ClearTable()
-                    PopulationTableItems()
-                Else
-                    MsgBox("ID No." & Me.Text & "CANNOT DELETE")
-                End If
 
+
+        If CheckOleDbconnection() Then
+            If (OleDbComm("DELETE  * FROM tblitems WHERE ID=" & Val(Me.Text) & "", oledb_connection) > 0) Then
+                MsgBox("Item have been DELETED!")
+                ClearTable()
+                PopulationTableItems()
+                ClearInputFields()
+            Else
+                MsgBox("Item not deleted!")
             End If
+        End If
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            oledb_connection.Close()
-        End Try
+
     End Sub
 End Class

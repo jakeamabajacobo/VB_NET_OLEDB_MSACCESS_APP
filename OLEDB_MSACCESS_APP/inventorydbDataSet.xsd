@@ -11,9 +11,21 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="inventorydbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="inventorydbDataSet" msprop:Generator_DataSetName="inventorydbDataSet">
+  <xs:element name="inventorydbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="inventorydbDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="inventorydbDataSet">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="oledb_report" msprop:Generator_RowClassName="oledb_reportRow" msprop:Generator_RowEvHandlerName="oledb_reportRowChangeEventHandler" msprop:Generator_RowDeletedName="oledb_reportRowDeleted" msprop:Generator_RowDeletingName="oledb_reportRowDeleting" msprop:Generator_RowEvArgName="oledb_reportRowChangeEvent" msprop:Generator_TablePropName="oledb_report" msprop:Generator_RowChangedName="oledb_reportRowChanged" msprop:Generator_UserTableName="oledb_report" msprop:Generator_RowChangingName="oledb_reportRowChanging" msprop:Generator_TableClassName="oledb_reportDataTable" msprop:Generator_TableVarName="tableoledb_report">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:string" minOccurs="0" />
+              <xs:element name="ITEMNAME" msprop:Generator_UserColumnName="ITEMNAME" msprop:Generator_ColumnPropNameInTable="ITEMNAMEColumn" msprop:Generator_ColumnPropNameInRow="ITEMNAME" msprop:Generator_ColumnVarNameInTable="columnITEMNAME" type="xs:string" minOccurs="0" />
+              <xs:element name="ITEMDESCRIPTION" msprop:Generator_UserColumnName="ITEMDESCRIPTION" msprop:Generator_ColumnPropNameInTable="ITEMDESCRIPTIONColumn" msprop:Generator_ColumnPropNameInRow="ITEMDESCRIPTION" msprop:Generator_ColumnVarNameInTable="columnITEMDESCRIPTION" type="xs:string" minOccurs="0" />
+              <xs:element name="QTY" msprop:Generator_UserColumnName="QTY" msprop:Generator_ColumnPropNameInTable="QTYColumn" msprop:Generator_ColumnPropNameInRow="QTY" msprop:Generator_ColumnVarNameInTable="columnQTY" type="xs:string" minOccurs="0" />
+              <xs:element name="PRICE" msprop:Generator_UserColumnName="PRICE" msprop:Generator_ColumnPropNameInTable="PRICEColumn" msprop:Generator_ColumnPropNameInRow="PRICE" msprop:Generator_ColumnVarNameInTable="columnPRICE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>

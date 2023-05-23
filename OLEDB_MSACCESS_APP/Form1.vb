@@ -1,4 +1,5 @@
 ﻿Imports System.Data.OleDb
+Imports Microsoft.Reporting.WinForms
 
 Public Class Form1
     'OLE DB INITIAL COLLECTION
@@ -30,10 +31,10 @@ Public Class Form1
     Function RowSelect()
 
         Me.Text = dg_view_item.CurrentRow.Cells(0).Value
-            txt_itemname.Text = dg_view_item.CurrentRow.Cells(1).Value
-            txt_itemdescription.Text = dg_view_item.CurrentRow.Cells(2).Value
-            txt_qty.Text = dg_view_item.CurrentRow.Cells(3).Value
-            txt_price.Text = dg_view_item.CurrentRow.Cells(4).Value
+        txt_itemname.Text = dg_view_item.CurrentRow.Cells(1).Value
+        txt_itemdescription.Text = dg_view_item.CurrentRow.Cells(2).Value
+        txt_qty.Text = dg_view_item.CurrentRow.Cells(3).Value
+        txt_price.Text = dg_view_item.CurrentRow.Cells(4).Value
 
 
     End Function
@@ -141,4 +142,56 @@ Public Class Form1
 
 
     End Sub
+
+    Private Sub btn_ge_report_Click(sender As Object, e As EventArgs) Handles btn_ge_report.Click
+        Dim oledb_reader As OleDbDataReader
+        Dim data_set As DataSet = New inventorydbDataSet
+
+
+        Report_Form.Show()
+
+
+        Try
+
+            sql_string = "SELECT * FROM tblitems"
+            oledb_command = New OleDbCommand(sql_string, oledb_connection)
+            oledb_command.CommandType = CommandType.Text
+            oledb_command.Connection.Open()
+            oledb_reader = oledb_command.ExecuteReader
+            data_set.Tables(0).Clear()
+            data_set.Tables(0).Load(oledb_reader)
+            oledb_reader.Close()
+            oledb_connection.Close()
+            Dim rpt_data_source = New ReportDataSource("dataset_inventory_report", data_set.Tables(0))
+            rpt_data_source.Name = "dataset_inventory_report"
+            rpt_data_source.Value = data_set.Tables(0)
+
+
+
+
+            With Report_Form.report_viewer
+                .ProcessingMode = ProcessingMode.Local
+                .LocalReport.DataSources.Clear()
+                .LocalReport.DataSources.Add(rpt_data_source)
+                .LocalReport.Refresh()
+                .PrinterSettings.Copies = 1
+                '.SetDisplayMode(DisplayMode.PrintLayout)
+                .ShowRefreshButton = True
+                .Text = "Inventory Report"
+                .RefreshReport()
+
+
+            End With
+
+
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            'oledb_connection.Close()
+        End Try
+
+    End Sub
+
 End Class

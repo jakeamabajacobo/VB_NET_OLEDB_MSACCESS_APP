@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,10 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.dg_view_item = New System.Windows.Forms.DataGridView()
-        Me.btn_loadrecord = New System.Windows.Forms.Button()
+        Me.btn_ge_report = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_itemname = New System.Windows.Forms.TextBox()
         Me.txt_itemdescription = New System.Windows.Forms.TextBox()
@@ -51,14 +51,14 @@ Partial Class Form1
         Me.dg_view_item.Size = New System.Drawing.Size(696, 281)
         Me.dg_view_item.TabIndex = 0
         '
-        'btn_loadrecord
+        'btn_ge_report
         '
-        Me.btn_loadrecord.Location = New System.Drawing.Point(598, 25)
-        Me.btn_loadrecord.Name = "btn_loadrecord"
-        Me.btn_loadrecord.Size = New System.Drawing.Size(121, 23)
-        Me.btn_loadrecord.TabIndex = 1
-        Me.btn_loadrecord.Text = "LOAD RECORD"
-        Me.btn_loadrecord.UseVisualStyleBackColor = True
+        Me.btn_ge_report.Location = New System.Drawing.Point(512, 12)
+        Me.btn_ge_report.Name = "btn_ge_report"
+        Me.btn_ge_report.Size = New System.Drawing.Size(207, 36)
+        Me.btn_ge_report.TabIndex = 1
+        Me.btn_ge_report.Text = "GENERATE REPORT"
+        Me.btn_ge_report.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -167,7 +167,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txt_itemname)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.btn_loadrecord)
+        Me.Controls.Add(Me.btn_ge_report)
         Me.Controls.Add(Me.dg_view_item)
         Me.Name = "Form1"
         Me.Text = "OLEDB_MSACCESS APP"
@@ -178,7 +178,7 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents dg_view_item As DataGridView
-    Friend WithEvents btn_loadrecord As Button
+    Friend WithEvents btn_ge_report As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents txt_itemname As TextBox
     Friend WithEvents txt_itemdescription As TextBox

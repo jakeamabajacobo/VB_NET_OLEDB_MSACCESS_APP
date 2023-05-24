@@ -32,14 +32,14 @@ Partial Class Report_Form
         Me.report_viewer.Location = New System.Drawing.Point(0, 0)
         Me.report_viewer.Name = "report_viewer"
         Me.report_viewer.ServerReport.BearerToken = Nothing
-        Me.report_viewer.Size = New System.Drawing.Size(800, 450)
+        Me.report_viewer.Size = New System.Drawing.Size(864, 696)
         Me.report_viewer.TabIndex = 0
         '
         'Report_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(864, 696)
         Me.Controls.Add(Me.report_viewer)
         Me.Name = "Report_Form"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -49,4 +49,5 @@ Partial Class Report_Form
     End Sub
 
     Friend WithEvents report_viewer As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 End Class

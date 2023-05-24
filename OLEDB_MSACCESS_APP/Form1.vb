@@ -3,7 +3,7 @@ Imports Microsoft.Reporting.WinForms
 
 Public Class Form1
     'OLE DB INITIAL COLLECTION
-    Private oledb_connection As New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Admin\Documents\inventorydb.accdb")
+    Private oledb_connection As New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\pc\Documents\GitHub\VB_NET_OLEDB_MSACCESS_APP\DB\inventorydb.accdb")
 
     Private sql_string As String
     Private oledb_command As New OleDbCommand
